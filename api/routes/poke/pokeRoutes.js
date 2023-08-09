@@ -7,8 +7,7 @@ const Poke = require('../../models/poke')
 router.get('/getContainer', async (req, res) => {
   let containerList = []  
   try {
-      containerList = await PokeContainer.find()
-      console.log(containerList)
+      containerList = await PokeContainer.find()      
       return res.json(containerList)
     } catch (error) {
       console.log(error)
@@ -58,7 +57,6 @@ router.post('/setPokeList', async (req, res) => {
   const data = req.body // map to model
   const pokesContainerId = data.pokesContainerId
   const pokes = data.pokes
-  console.log(pokesContainerId)
   let pokesSaved = 0;
   //save data on db pokeContainer
   try {
@@ -71,7 +69,6 @@ router.post('/setPokeList', async (req, res) => {
       pokeDB.save()
       pokesSaved++;  
     });
-    console.log('>>', pokesSaved, pokes.length)
     if(pokesSaved == pokes.length) {
       // update container to be ready and need tio be notify
       const filter = {_id: pokesContainerId }
@@ -79,7 +76,6 @@ router.post('/setPokeList', async (req, res) => {
 
       PokeContainer.findById(filter._id)
       .then((item) => {
-        console.log('>>>>>',item)
         item.status = update.status;
         item.save()
       });     
