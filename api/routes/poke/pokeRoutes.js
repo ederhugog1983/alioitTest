@@ -32,7 +32,7 @@ router.post('/setPokeContainer', async (req, res) => {
   //save data on db pokeContainer
   try {
     const pokeContainerDB = new PokeContainer({
-      name:data.name + Date.now().toString(),
+      name:data.name + '-' + Date.now().toString(),
       status:'process',
       date: Date.now()
     })
