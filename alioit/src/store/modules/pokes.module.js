@@ -93,7 +93,6 @@ const actions = {
     return 
   },
   setStatusPokeContainer: ({commit}, data) => {
-    console.log('?????', data)
     pokesService.setStatusPokeContainer(data).then(() => { 
       commit('',{})
     })

@@ -17,7 +17,6 @@ function savePokesToContainer (data) {
 }
 
 function setStatusPokeContainer (data) {
-  console.log('>>>>>>', data)
   return axiosRequest.post('/poke/setStatusPokeContainer',data).then(response => {
     return response.data
   }, error => { console.log(error) })
