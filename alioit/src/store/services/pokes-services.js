@@ -15,6 +15,13 @@ function savePokesToContainer (data) {
     return response.data
   }, error => { console.log(error) })
 }
+
+function setStatusPokeContainer (data) {
+  console.log('>>>>>>', data)
+  return axiosRequest.post('/poke/setStatusPokeContainer',data).then(response => {
+    return response.data
+  }, error => { console.log(error) })
+}
 function saveContainer (data) {
   return axiosRequest.post('/poke/setPokeContainer',data).then(response => {
     return response.data
@@ -31,5 +38,6 @@ export default {
   getPokesAPI,
   savePokesToContainer,
   saveContainer,
-  getContainerPokes
+  getContainerPokes,
+  setStatusPokeContainer
 }

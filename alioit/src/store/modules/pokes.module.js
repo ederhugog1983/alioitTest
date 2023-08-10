@@ -58,8 +58,8 @@ const actions = {
     commit('SET_SHOWADDCONTAINER', data)
     return 
   },
-  getContainers: async ({ commit }, data) => {      
-      await pokesService.getContainers(data).then((r) => {        
+  getContainers: ({ commit }, data) => {      
+      pokesService.getContainers(data).then((r) => {        
         commit('SET_CONTAINERS', r)
       })
       return 
@@ -74,7 +74,7 @@ const actions = {
     return 
   },
   savePokesToContainer: ({ commit }, data) => {    
-      pokesService.savePokesToContainer(data).then(() => {        
+      pokesService.savePokesToContainer(data).then(async () => {        
       commit('SET_SHOWCONTAINER', true)
       commit('SET_SHOWPOKEAPI', false)      
     })
@@ -92,6 +92,13 @@ const actions = {
     })
     return 
   },
+  setStatusPokeContainer: ({commit}, data) => {
+    console.log('?????', data)
+    pokesService.setStatusPokeContainer(data).then(() => { 
+      commit('',{})
+    })
+  return 
+},
   getContainerPokes: async ({ commit }, data) => {
     await pokesService.getContainerPokes(data).then((r) => {        
       commit('SET_POKESAVEDONCONTAINER', r)
